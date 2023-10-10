@@ -1,0 +1,57 @@
+/* Estilos para a lista de personagens */
+.personagem-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.imagem-personagem {
+  border-radius: 100%;
+  max-width: 200px;
+  max-height: 100px;
+  margin-right: 20px;
+}
+
+.nome-personagem {
+  flex: 1;
+  font-weight: bold;
+}
+
+/* Estilos para os detalhes do personagem */
+.detailsContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+ 
+}
+
+.imageContainer {
+  border-radius: 30px;
+  margin-right: 20px;
+}
+
+.characterImage {
+  width: 200px;
+  border-radius: 100px;
+  height: 200px;
+}
+
+.detailsText {
+  text-align: left;
+}
+
+.app-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.character-list {
+  flex: 1;
+  padding: 10px;
+}
+
+.character-details {
+  flex: 1;
+  padding: 10px;
+  border-left: 1px solid #ccc;
+}
