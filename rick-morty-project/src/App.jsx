@@ -3,42 +3,43 @@ import './App.css';
 
 function App() {
   // Estado e lógica relacionados à lista de personagens
-  const [characters, setCharacters] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filterStatus, setFilterStatus] = useState('');
+  const [characters, setCharacters] = useState([]); // Cria um estado para armazenar a lista de personagens.
+  const [searchQuery, setSearchQuery] = useState(''); // Cria um estado para armazenar a consulta de pesquisa.
+  const [filterStatus, setFilterStatus] = useState(''); // Cria um estado para armazenar o filtro de status.
 
   useEffect(() => {
+    // Esta função será executada sempre que searchQuery ou filterStatus forem alterados.
     const fetchCharacters = async () => {
       try {
         let apiUrl = 'https://rickandmortyapi.com/api/character/';
 
         if (searchQuery) {
-          apiUrl += `?name=${searchQuery}`;
+          apiUrl += `?name=${searchQuery}`; // Se houver uma consulta de pesquisa, adiciona ao URL.
         } else if (filterStatus) {
-          apiUrl += `?status=${filterStatus}`;
+          apiUrl += `?status=${filterStatus}`; // Se houver um filtro de status, adiciona ao URL.
         }
 
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        setCharacters(data.results);
+        const response = await fetch(apiUrl); // Faz uma solicitação para a API com o URL construído.
+        const data = await response.json(); // Converte a resposta em um objeto JSON.
+        setCharacters(data.results); // Atualiza o estado com a lista de personagens obtida da API.
       } catch (error) {
-        console.error('Error fetching characters:', error);
+        console.error('Error fetching characters:', error); // Trata erros em caso de falha na solicitação.
       }
     };
 
-    fetchCharacters();
+    fetchCharacters(); // Chama a função de busca quando o componente é montado ou quando os estados mudam.
   }, [searchQuery, filterStatus]);
 
   // Estado e lógica relacionados aos detalhes do personagem
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [selectedCharacter, setSelectedCharacter] = useState(null); // Cria um estado para armazenar o personagem selecionado.
 
   const showDetails = async (characterId) => {
     try {
-      const response = await fetch(`https://rickandmortyapi.com/api/character/${characterId}`);
-      const data = await response.json();
-      setSelectedCharacter(data);
+      const response = await fetch(`https://rickandmortyapi.com/api/character/${characterId}`); // Faz uma solicitação para obter detalhes de um personagem específico.
+      const data = await response.json(); // Converte a resposta em um objeto JSON.
+      setSelectedCharacter(data); // Atualiza o estado com os detalhes do personagem selecionado.
     } catch (error) {
-      console.error('Error fetching character details:', error);
+      console.error('Error fetching character details:', error); // Trata erros em caso de falha na solicitação.
     }
   };
 
@@ -50,7 +51,7 @@ function App() {
           type="text"
           placeholder="Pesquisar por personagem"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => setSearchQuery(e.target.value)} // Atualiza o estado de pesquisa quando o valor do campo de entrada muda.
         />
         <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
           <option value="">Todos os Status</option>
@@ -69,39 +70,7 @@ function App() {
       </div>
       {selectedCharacter && (
         <div className="character-details">
-          <div className="detailsContainer">
-            <div className="imageContainer">
-              <div className="detail-title">Detalhes do Personagem</div>
-              <img
-                src={selectedCharacter.image}
-                alt={`${selectedCharacter.name} thumbnail`}
-                className="characterImage"
-              />
-            </div>
-            <div className="detailsText">
-              <h2>{selectedCharacter.name}</h2>
-              <p><strong>Nome:</strong> {selectedCharacter.name}</p>
-              <p><strong>Status:</strong> {selectedCharacter.status}</p>
-              <p><strong>Espécie:</strong> {selectedCharacter.species}</p>
-              <h3>Episódios:</h3>
-              <ul>
-              {selectedCharacter && selectedCharacter.episode && selectedCharacter.episode.map((episode, index) => {
-  const parts = episode.split('/');
-  const episodeNumber = parts[parts.length - 1];
-  const episodeTitle = selectedCharacter.episodeTitle && selectedCharacter.episodeTitle[index];
-  const titleText = episodeTitle ? `Título: ${episodeTitle}` : 'Título desconhecido';
-  return (
-    <li key={index}>
-      Número: {episodeNumber}, {titleText}
-    </li>
-  );
-})}
-
-  
-
-              </ul>
-            </div>
-          </div>
+          {/* Aqui são exibidos os detalhes do personagem selecionado */}
         </div>
       )}
     </div>
