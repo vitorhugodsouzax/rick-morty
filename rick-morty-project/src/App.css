@@ -6,15 +6,16 @@
 }
 
 .imagem-personagem {
-  border-radius: 100%;
-  max-width: 200px;
-  max-height: 100px;
+  width: 100px; /* Ajuste o tamanho conforme desejado */
+  height: 100px; /* Ajuste o tamanho conforme desejado */
+  border-radius: 50%;
   margin-right: 20px;
 }
 
+
 .nome-personagem {
-  flex: 1;
   font-weight: bold;
+  margin-right: 20px; /* Ajuste a margem conforme necessário */
 }
 
 /* Estilos para os detalhes do personagem */
@@ -22,12 +23,17 @@
   display: flex;
   align-items: center;
   margin-top: 20px;
- 
+}
+
+.episodios {
+  font-size: 15px;
 }
 
 .imageContainer {
   border-radius: 30px;
   margin-right: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .characterImage {
@@ -54,4 +60,138 @@
   flex: 1;
   padding: 10px;
   border-left: 1px solid #ccc;
+}
+
+
+.container {
+  padding-left: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.lista-container {
+
+align-items: center;
+border-width: 2px;
+border-radius: 10px;
+height: 100%;
+}
+
+.container-characters:hover {
+
+scale: 1.02;
+}
+
+.detalhes-container {
+
+align-items: center;
+height: 600px;
+border-width: 2px;
+border-radius: 10px;
+width: 400px;
+position: fixed;
+right: 71px;
+}
+
+.container-characters {
+display: flex;
+flex-direction: row;
+
+margin: 10px;
+border-width: 2px;
+border-radius: 10px;
+gap: 10px;
+height: 120px;
+align-items: center;
+justify-content: space-evenly;
+}
+
+.characters-img {
+height: 100px;
+width: 100px;
+border: 1px solid rgb(17 57 17);;
+border-radius: 100%;
+}
+
+.detalhes-img {
+height: 170px;
+width: 170px;
+
+border-radius: 100%;
+}
+
+
+.pesquisa-container {
+display: flex;
+padding: 10px;
+width: 500px;
+justify-content: space-between;
+}
+
+.pesquisa{
+border-radius: 10px;
+
+text-align: center;
+}
+
+.nome {
+font-size: 20px;
+width: 160px;
+text-align: center;
+}
+
+.title {
+font-size: 28px;
+text-align: center;
+}
+
+.title-episodio {
+font-size: 20px;
+}
+
+.detalhes {
+font-size: 15px;
+width: 293px;
+}
+
+.episodios {
+font-size: 12px;
+width: 180px;
+
+border-radius: 5px;
+height: 44px;
+display: flex;
+align-items: center;
+}
+
+.detalhes-box {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.episode-list {
+display: flex;
+max-height: 157px;
+flex-wrap: wrap;
+overflow-y: scroll;
+padding: 10px;
+justify-content: center;
+scrollbar-width: none;
+/* Firefox */
+-ms-overflow-style: none;
+/* Explorer/Edge */
+gap: 15px;
+text-align: center;
+/* border-top: 1px solid rgb(14, 255, 62);; */
+}
+
+.episode-list::-webkit-scrollbar {
+width: 0;
+/* Chrome */
+}
+
+li {
+list-style: none;
 }
